@@ -14,7 +14,7 @@ spec:
       spec:
         containers:
         - name: captureorder
-          image: uniqueacrname.azurecr.io/captureorder # replace with your own repository
+          image: akschallenge20190613acr.azurecr.io/captureorder # replace with your own repository
           imagePullPolicy: Always
           readinessProbe:
             httpGet:
@@ -49,5 +49,10 @@ spec:
               secretKeyRef:
                 name: mongodb
                 key: mongoPassword
+          - name: CHALLENGEAPPINSIGHTS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: mongodb
+                key: appInsightsKey
           ports:
           - containerPort: 80
